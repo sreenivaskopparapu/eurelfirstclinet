@@ -18,6 +18,7 @@ public class ServiceOne {
 	@GetMapping("/sendMobileNumber/{mobile}")
 	public String sendMobileNumber(@PathVariable("mobile") String mobileNumber) {
 		// url to check http://localhost:8041/serviceOne/sendMobileNumber/9573320910
+		//when you register with microservice just pass the application name given in the properties file to consume it.
 		return resttemplate.getForObject("http://eurekaclienttwo/serviceTwo/getMobileNumber/"+mobileNumber, String.class);
 	}
 	 
@@ -25,6 +26,5 @@ public class ServiceOne {
 	public String sendCityname(@RequestParam("city") String cityName) {
 		
 		return resttemplate.getForObject("http://eurekaclienttwo/serviceTwo/getCityName?city="+cityName, String.class);
-
 	}
 }
